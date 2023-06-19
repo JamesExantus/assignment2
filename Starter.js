@@ -5,7 +5,6 @@ function myEachCallBack(elem,a,arr){
     console.log(arr[a]);
 }
 
-
 function myMapCallBack(elem,a,arr){
     elem = arr[a];
     console.log(a+1,arr[a]);
@@ -59,50 +58,103 @@ function myEach(nums,cb) {
 
 // My Map
 const kyArray = [10,20,30];
-function myMap(nums){
+function myMap(nums,cb){
     for(let i = 0; i <nums.length; i++){
-       myMapCallBack(nums[i],i,nums);
+       cb(nums[i],i,nums);
     }
 }
-myMap(kyArray);
+myMap(kyArray,myMapCallBack);
 
 //My filter
 const shortenedMonth = ["jan", "feb", "mar", "apr", "may", "june", "jul", "aug", "sep", "oct", "nov", "dec"];
 let criteria = 3;
 
-function myFilter(nums, testnum)
+function myFilter(nums,cb,testnum)
 {
     for(let i = 0; i<nums.length; i++){
-        myFilterCallBack(nums[i],i,nums, testnum);
+        cb(nums[i],i,nums,testnum);
     }
 }
-myFilter(shortenedMonth,criteria);
+myFilter(shortenedMonth,myFilterCallBack,4);
 
 //my Some
 const overTwentyOne = [18, 19, 20, 21, 22, 23];
 
-function mySome(nums){
+function mySome(nums, cb){
     for(let i = 0; i<nums.length; i++){
-        mySomeCallBack(nums[i],i,nums);
+        cb(nums[i],i,nums);
     }
 }
-mySome(overTwentyOne);
+mySome(overTwentyOne,mySomeCallBack);
 
 //my Every
-function myEvery(nums){
+function myEvery(nums,cb){
     for(let i = 0; i < nums.length; i++){
-      myEveryCallBack(nums,i);
+      cb(nums[i],i,nums);
 
     }
 }
-myEvery(overTwentyOne);
+myEvery(overTwentyOne,myEveryCallBack);
 
 //my Reduce
 function myReduce(nums) {
     for(let i =0; i <nums.length; i++){
+        cb(nums[i],i,nums);
 
     }
 }
 
 
+/*
+    The entire browser crashes when these functions are ran. 
 
+//my includes
+function myincludes(nums,target) {
+    for(let i = 0; nums.length; i++){
+        if(nums[i] == target){
+            console.log(true);
+            return true;
+        }
+    }
+}
+myincludes(overTwentyOne,21);
+
+*/
+//myIndexOf
+
+function myIndexOf(nums,target){
+    
+    let temp = -1;
+    for(let i = 0; nums.length; i++){
+        if(nums[i]== target) {
+            console.log(nums[i]);
+            temp = i;
+        }
+    }
+    console.log(temp);
+   return temp;
+}
+
+myIndexOf(overTwentyOne,21);
+
+// my push
+function myPush(nums){
+
+}
+
+
+//my unshift
+function myUnshift(){
+
+}
+
+//grab keys
+
+function grabKeys(){
+
+}
+
+//grag values
+function grabValues(){
+
+}
