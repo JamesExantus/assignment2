@@ -38,9 +38,14 @@ function myEveryCallBack(arr,a){
     }
 }
 
-function myReduceCallBack(arr, a){
-
-
+function myReduceCallBack(accu, currv, arr ){
+    
+    for(let i = 0; i < arr.length; i++){
+        accu += arr[i];
+    }
+    console.log(accu);
+    return accu;
+    
 }
 
 //end of list
@@ -74,6 +79,7 @@ function myFilter(nums,cb,testnum)
     for(let i = 0; i<nums.length; i++){
         cb(nums[i],i,nums,testnum);
     }
+    return nums;
 }
 myFilter(shortenedMonth,myFilterCallBack,4);
 
@@ -97,13 +103,13 @@ function myEvery(nums,cb){
 myEvery(overTwentyOne,myEveryCallBack);
 
 //my Reduce
-function myReduce(nums) {
-    for(let i =0; i <nums.length; i++){
-        cb(nums[i],i,nums);
-
-    }
+function myReduce(nums, cb) {
+    let accumulator = 0;
+    let currvalue = nums[0];
+        cb(accumulator, currvalue,nums);
 }
 
+myReduce(overTwentyOne, myReduceCallBack);
 
 /*
     The entire browser crashes when these functions are ran. 
@@ -119,13 +125,13 @@ function myincludes(nums,target) {
 }
 myincludes(overTwentyOne,21);
 
-*/
-//myIndexOf
 
+//myIndexOf
+*/
 function myIndexOf(nums,target){
     
     let temp = -1;
-    for(let i = 0; nums.length; i++){
+    for(let i = 0; i < nums.length; i++){
         if(nums[i]== target) {
             console.log(nums[i]);
             temp = i;
@@ -138,10 +144,23 @@ function myIndexOf(nums,target){
 myIndexOf(overTwentyOne,21);
 
 // my push
-function myPush(nums){
+function myPush(elementn,nums){
+    
+    let oldsize = nums.length;
+   let size = nums.length * 2;
+   let newarr = [size];
 
+    for(let i = 0; i < nums.length; i++){
+        newarr[i] = nums[i];
+       
+    }
+    newarr[oldsize] = elementn;
+    nums = newarr;
+    
+
+    return nums;
 }
-
+myPush(40, overTwentyOne);
 
 //my unshift
 function myUnshift(){
